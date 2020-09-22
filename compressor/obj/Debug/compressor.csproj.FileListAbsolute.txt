@@ -1,0 +1,10 @@
+C:\Users\Admin\source\repos\compressor\compressor\bin\Debug\compressor.exe.config
+C:\Users\Admin\source\repos\compressor\compressor\bin\Debug\compressor.exe
+C:\Users\Admin\source\repos\compressor\compressor\bin\Debug\compressor.pdb
+C:\Users\Admin\source\repos\compressor\compressor\obj\Debug\compressor.csprojAssemblyReference.cache
+C:\Users\Admin\source\repos\compressor\compressor\obj\Debug\compressor.Form1.resources
+C:\Users\Admin\source\repos\compressor\compressor\obj\Debug\compressor.Properties.Resources.resources
+C:\Users\Admin\source\repos\compressor\compressor\obj\Debug\compressor.csproj.GenerateResource.cache
+C:\Users\Admin\source\repos\compressor\compressor\obj\Debug\compressor.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\compressor\compressor\obj\Debug\compressor.exe
+C:\Users\Admin\source\repos\compressor\compressor\obj\Debug\compressor.pdb
