@@ -23,7 +23,7 @@ namespace compressor
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            ofd.Filter = "PNG|*.png";
+            ofd.Filter = "Compressable Files|*.png|TXT (Decompressable files)|*.txt";
         }
 
         private void btnBrowseFile_Click(object sender, EventArgs e)
@@ -44,6 +44,8 @@ namespace compressor
 
         private void btnCompress_Click(object sender, EventArgs e)
         {
+            ffc.SetLevel(tbLevel.Value);
+
             //If the destination folder was never selected. It just makes the destination 
             if (txtDestinationFolder.Text.Equals(""))
             {
@@ -51,14 +53,35 @@ namespace compressor
                 txtDestinationFolder.Text = destination;
             }
 
-            byte[] compressed = ffc.compress(txtBrowseFile.Text);
+            byte[] compressed = ffc.Compress(txtBrowseFile.Text);
             string[] stringCompressed = compressed.Select(byteValue => byteValue.ToString()).ToArray();
                 //.ASCII.GetString(compressed, 0, compressed.Length);
 
             System.IO.File.WriteAllBytes(txtDestinationFolder.Text + "\\HAHA.txt", compressed);
             System.IO.File.WriteAllLines(txtDestinationFolder.Text + "\\HAHA2.txt", stringCompressed);
-            
+            MessageBox.Show((ushort.Parse(stringCompressed[0] + stringCompressed[1]).ToString()));
             MessageBox.Show("Your compression is done");
+        }
+
+        private void btnDeCompress_Click(object sender, EventArgs e)
+        {
+            //If the destination folder was never selected. It just makes the destination 
+            if (txtDestinationFolder.Text.Equals(""))
+            {
+                string destination = txtBrowseFile.Text.Substring(0, txtBrowseFile.Text.LastIndexOf('\\'));
+                txtDestinationFolder.Text = destination;
+            }
+
+            byte[] compressedImage = System.IO.File.ReadAllBytes(txtBrowseFile.Text);
+
+            Bitmap image = ffc.Decompress(compressedImage);
+
+            image.Save(txtDestinationFolder.Text + "\\Final.png", System.Drawing.Imaging.ImageFormat.Png);
+        }
+
+        private void trackBar1_Scroll(object sender, EventArgs e)
+        {
+            txtLevel.Text = tbLevel.Value.ToString();
         }
     }
 }
